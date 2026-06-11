@@ -1,0 +1,89 @@
+<%- include('partials/header') %>
+
+<!-- HERO SECTION -->
+<main>
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-badge">✨ Simple & Powerful</div>
+      <h1>Your ideas,<br>organised <span class="accent">beautifully.</span></h1>
+      <p>NoteHub is a simple and powerful notes application built with Node.js, Express, MongoDB and EJS. Keep all your thoughts in one place.</p>
+      <div class="hero-btns">
+        <a href="/register" class="btn-primary">Get Started — It's Free</a>
+        <a href="/login" class="btn-secondary">Login →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><span>📝</span> Create Notes</div>
+        <div class="hero-stat"><span>🗂️</span> Categorise</div>
+        <div class="hero-stat"><span>📌</span> Pin Important</div>
+        <div class="hero-stat"><span>🔒</span> Secure Login</div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <!-- Floating dashboard mockup -->
+      <div class="mockup-card main-card">
+        <div class="mockup-header">
+          <span class="mockup-dot red"></span>
+          <span class="mockup-dot yellow"></span>
+          <span class="mockup-dot green"></span>
+          <span class="mockup-title">Dashboard</span>
+        </div>
+        <div class="mockup-stats">
+          <div class="mockup-stat">
+            <div class="ms-val">12</div>
+            <div class="ms-label">Notes</div>
+          </div>
+          <div class="mockup-stat">
+            <div class="ms-val">3</div>
+            <div class="ms-label">Pinned</div>
+          </div>
+          <div class="mockup-stat">
+            <div class="ms-val">5</div>
+            <div class="ms-label">Categories</div>
+          </div>
+        </div>
+        <div class="mockup-note">
+          <span class="mockup-tag purple">Ideas</span>
+          <div class="mockup-note-title">Project Ideas</div>
+          <div class="mockup-note-text">Some random project ideas...</div>
+        </div>
+        <div class="mockup-note">
+          <span class="mockup-tag green">Learning</span>
+          <div class="mockup-note-title">Learning Node.js</div>
+          <div class="mockup-note-text">Middleware and express...</div>
+        </div>
+        <div class="mockup-note">
+          <span class="mockup-tag orange">Backend</span>
+          <div class="mockup-note-title">MongoDB Aggregation</div>
+          <div class="mockup-note-text">Pipelines and examples...</div>
+        </div>
+      </div>
+
+      <!-- Floating side cards -->
+      <div class="float-pill pill-1">📝 Note saved!</div>
+      <div class="float-pill pill-2">📌 Pinned</div>
+      <div class="float-pill pill-3">✅ All synced</div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="features" id="features">
+    <div class="features-header">
+      <h2>Everything you need to stay <span class="accent">organised</span></h2>
+      <p>Simple tools, powerful results</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Fast & Lightweight</h3>
+        <p>Server side rendered pages load instantly. No waiting, no lag.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Secure Authentication</h3>
+        <p>Your data is protected with bcrypt password hashing and encrypted sessions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🗂️</div>
+        <h3>Smart Categories</h3>
+        <p>Organise notes by Ideas, Learning, Backend, Personal and more.</p>

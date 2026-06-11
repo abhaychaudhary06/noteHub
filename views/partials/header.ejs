@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NoteHub</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav class="navbar">
+  <a href="/" class="nav-logo">📒 NoteHub</a>
+  <ul class="nav-links">
+    <% if (typeof user !== 'undefined' && user) { %>
+      <li><a href="/dashboard">Dashboard</a></li>
+      <li><a href="/notes">My Notes</a></li>
+      <li><a href="/profile">Profile</a></li>
+      <li>
+        <form action="/logout?_method=DELETE" method="POST" style="margin:0">
+          <button type="submit" class="btn-nav-logout">Logout</button>
+        </form>
+      </li>
+    <% } else { %>
+      <li><a href="/">Home</a></li>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/register" class="btn-primary small">Get Started</a></li>
+    <% } %>
+  </ul>
+</nav>

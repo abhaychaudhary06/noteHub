@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+<div class="app-layout">
+  <aside class="sidebar">
+    <a href="/dashboard" class="sidebar-link"><span>🏠</span> Dashboard</a>
+    <a href="/notes" class="sidebar-link"><span>📝</span> Notes</a>
+    <a href="/notes/add" class="sidebar-link active"><span>➕</span> Add Note</a>
+    <a href="/profile" class="sidebar-link"><span>👤</span> Profile</a>
+  </aside>
+
+  <main class="page-content">
+    <a href="/notes" class="back-link">← Back to notes</a>
+    <h1 class="page-title">Add New Note</h1>
+
+    <div class="form-card" style="margin-top:20px">
+      <% if (error) { %>
+        <div class="alert alert-error"><%= error %></div>
+      <% } %>
+
+      <form action="/notes/add" method="POST">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" name="title" placeholder="Enter note title" required>
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select name="category">
+            <option value="Ideas">Ideas</option>
+            <option value="Learning">Learning</option>
+            <option value="Backend">Backend</option>
+            <option value="Personal">Personal</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Content</label>
+          <textarea name="content" placeholder="Write your note here..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Save Note</button>
+      </form>
+    </div>
+  </main>
+</div>
+<%- include('partials/footer') %>

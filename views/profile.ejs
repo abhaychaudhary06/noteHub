@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+<div class="app-layout">
+  <aside class="sidebar">
+    <a href="/dashboard" class="sidebar-link"><span>🏠</span> Dashboard</a>
+    <a href="/notes" class="sidebar-link"><span>📝</span> Notes</a>
+    <a href="/notes/add" class="sidebar-link"><span>➕</span> Add Note</a>
+    <a href="/profile" class="sidebar-link active"><span>👤</span> Profile</a>
+  </aside>
+
+  <main class="page-content">
+    <h1 class="page-title">Profile</h1>
+    <p class="page-sub">Manage your account</p>
+
+    <div class="profile-card">
+      <div class="profile-avatar">👤</div>
+      <div class="profile-name"><%= user.name %></div>
+      <div class="profile-email"><%= user.email %></div>
+
+      <div class="profile-row">
+        <span class="profile-key">Name</span>
+        <span class="profile-val"><%= user.name %></span>
+      </div>
+      <div class="profile-row">
+        <span class="profile-key">Email</span>
+        <span class="profile-val"><%= user.email %></span>
+      </div>
+      <div class="profile-row">
+        <span class="profile-key">Member Since</span>
+        <span class="profile-val">
+  <%= user.createdAt ? new Date(user.createdAt).toDateString() : 'N/A' %>
+</span>
+      </div>
+
+      <form action="/logout?_method=DELETE" method="POST">
+        <button type="submit" class="btn-danger">Logout</button>
+      </form>
+    </div>
+  </main>
+</div>
+<%- include('partials/footer') %>

@@ -1,0 +1,72 @@
+<%- include('partials/header') %>
+<div class="app-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <a href="/dashboard" class="sidebar-link active"><span>🏠</span> Dashboard</a>
+    <a href="/notes" class="sidebar-link"><span>📝</span> Notes</a>
+    <a href="/notes/add" class="sidebar-link"><span>➕</span> Add Note</a>
+    <a href="/profile" class="sidebar-link"><span>👤</span> Profile</a>
+  </aside>
+
+  <main class="page-content">
+    <h1 class="page-title">Dashboard</h1>
+    <p class="page-sub">Welcome back, <%= user.name %>!</p>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Notes</div>
+        <div class="stat-value"><%= totalNotes %></div>
+        <div class="stat-desc">All your notes</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Pinned Notes</div>
+        <div class="stat-value"><%= pinnedNotes %></div>
+        <div class="stat-desc">Important notes</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Categories</div>
+        <div class="stat-value"><%= categoryCount %></div>
+        <div class="stat-desc">All categories</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Member Since</div>
+        <div class="stat-value" style="font-size:16px;padding-top:6px">
+  <%= user.createdAt ? new Date(user.createdAt).toDateString() : 'N/A' %>
+</div>
+        <div class="stat-desc">Your journey begins</div>
+      </div>
+    </div>
+
+    <!-- Recent Notes -->
+    <div class="section-header">
+      <h2 class="section-title">Recent Notes</h2>
+      <a href="/notes" class="view-all">View all notes →</a>
+    </div>
+
+    <% if (notes.length === 0) { %>
+      <div class="empty">
+        <h3>No notes yet</h3>
+        <p>Start by creating your first note</p>
+        <a href="/notes/add" class="btn-primary">Add Note</a>
+      </div>
+    <% } else { %>
+      <div class="notes-grid">
+        <% notes.forEach(note => { %>
+          <div class="note-card">
+            <h3><%= note.title %></h3>
+            <p><%= note.content.substring(0, 80) %>...</p>
+            <div class="note-meta">
+              <span class="tag tag-<%= note.category.toLowerCase() %>"><%= note.category %></span>
+              <span class="note-date">
+                <%= Math.floor((Date.now() - note.createdAt) / (1000*60*60*24)) %> days ago
+              </span>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </main>
+</div>
+<%- include('partials/footer') %>

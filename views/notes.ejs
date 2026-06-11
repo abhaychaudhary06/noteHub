@@ -1,0 +1,49 @@
+<%- include('partials/header') %>
+<div class="app-layout">
+  <aside class="sidebar">
+    <a href="/dashboard" class="sidebar-link"><span>🏠</span> Dashboard</a>
+    <a href="/notes" class="sidebar-link active"><span>📝</span> Notes</a>
+    <a href="/notes/add" class="sidebar-link"><span>➕</span> Add Note</a>
+    <a href="/profile" class="sidebar-link"><span>👤</span> Profile</a>
+  </aside>
+
+  <main class="page-content">
+    <div class="top-bar">
+      <div>
+        <h1 class="page-title">All Notes</h1>
+        <p class="page-sub">Your all notes in one place</p>
+      </div>
+      <a href="/notes/add" class="btn-primary">+ Add Note</a>
+    </div>
+
+    <% if (notes.length === 0) { %>
+      <div class="empty">
+        <h3>No notes yet</h3>
+        <p>Create your first note to get started</p>
+        <a href="/notes/add" class="btn-primary">Add Note</a>
+      </div>
+    <% } else { %>
+      <div class="notes-list">
+        <% notes.forEach(note => { %>
+          <div class="note-row">
+            <div class="note-row-info">
+              <h3><%= note.title %></h3>
+              <p><%= note.content.substring(0, 100) %>...</p>
+              <span class="tag tag-<%= note.category.toLowerCase() %>" style="margin-top:8px;display:inline-block">
+                <%= note.category %>
+              </span>
+            </div>
+            <div class="note-actions">
+              <a href="/notes/edit/<%= note._id %>" class="btn-icon">✏️ Edit</a>
+              <form action="/notes/<%= note._id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn-icon danger"
+                  onclick="return confirm('Delete this note?')">🗑️ Delete</button>
+              </form>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </main>
+</div>
+<%- include('partials/footer') %>
